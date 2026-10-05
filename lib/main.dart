@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     AlertDialog dialog = AlertDialog(
       title: Text("Judul Dialog"),
-      content: Text("Ini isi dialog Alvin"),
+      content: Text("Ini isi dialog Dimas"),
       actions: [okButton],
     );
 
