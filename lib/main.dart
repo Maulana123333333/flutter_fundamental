@@ -1,106 +1,106 @@
 import 'package:flutter/material.dart';
-import 'package:pml/basic_widgets/text_widget.dart';
-import 'package:pml/basic_widgets/image_widget.dart';
-import 'package:pml/basic_widgets/text_input.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Fundamental',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  DateTime? _dateTime = DateTime.now();
-
-  // void _incrementCounter() {
-  //   setState(() {
-
-  //    _counter++;
-  //   });
-  // }
-
-  void tampilkanDialog(BuildContext context) {
-    Widget okButton = TextButton(
-      child: Text("Ok"),
-      onPressed: () => Navigator.pop(context),
-    );
-
-    AlertDialog dialog = AlertDialog(
-      title: Text("Judul Dialog"),
-      content: Text("Ini isi dialog Dimas"),
-      actions: [okButton],
-    );
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return dialog;
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(_dateTime.toString()),
-            MyImageWidget(),
-            MyWidget(),
-            InputTextWidget(),
-            ElevatedButton(
-              child: const Text("ubah tanggal"),
-              onPressed: () async {
-                final DateTime? tanggal = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2015, 8),
-                  lastDate: DateTime(2101),
-                );
-
-                if (tanggal != null && tanggal != _dateTime) {
-                  setState(() {
-                    _dateTime = tanggal;
-                  });
-                }
-              },
+    // 1. PRAKTIKUM 1: Section Judul (Title Section)
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: const Text(
+                    'Wisata Gunung di Batu',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Text(
+                  'Batu, Malang, Indonesia',
+                  style: TextStyle(color: Colors.grey[500]),
+                ),
+              ],
             ),
-            const Text('You have pushed the button this many times:'),
+          ),
+          Icon(Icons.star, color: Colors.red[500]),
+          const Text('41'),
+        ],
+      ),
+    );
+
+    // 2. PRAKTIKUM 2: Section Tombol (Button Section)
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
+    // 3. PRAKTIKUM 3: Section Teks Deskripsi (Text Section)
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'Kota Batu terkenal dengan keindahan alam pegunungan dan udaranya yang sejuk. '
+        'Destinasi wisata ini menawarkan pemandangan spektakuler serta berbagai wahana rekreasi. '
+        'Nama: [Dimas mochtar hasan maulana] | NIM: [24520003]',
+        softWrap: true,
+      ),
+    );
+
+    // 4. PRAKTIKUM 4: Menggabungkan Semua Section ke dalam ListView
+    return MaterialApp(
+      title: 'Flutter layout: Dimas 24520003',
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Flutter layout demo')),
+        body: ListView(
+          children: [
+            // Memanggil gambar dari folder assets (Praktikum 4)
+            Image.asset(
+              'images/asset.jpeg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            titleSection, // Praktikum 1
+            buttonSection, // Praktikum 2
+            textSection, // Praktikum 3
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => tampilkanDialog(context),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    );
+  }
+
+  // Method Helper untuk membuat kolom tombol (Praktikum 2)
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
