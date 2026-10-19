@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pml/pages/shoping_screen.dart';
 import 'package:pml/pages/detail_shoping_screen.dart';
-import 'package:pml/data/barang.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Aplikasi Belanja',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
       ),
       initialRoute: '/',
       routes: {

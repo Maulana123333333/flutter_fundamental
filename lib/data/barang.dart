@@ -1,4 +1,69 @@
-final listBarang = <Map<String, dynamic>>[
-  {'id': 1, 'namaBarang': 'Mentimun'},
-  {'id': 2, 'namaBarang': 'Tomat'},
+import 'package:pml/Domain/barang.dart';
+
+final List<Barang> listBarang = [
+  const Barang(
+    id: 1,
+    namaBarang: "Mentimun",
+    harga: 5000,
+    stok: 12,
+    rating: 4.5,
+    image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=500",
+  ),
+  const Barang(
+    id: 2,
+    namaBarang: "Tomat",
+    harga: 8000,
+    stok: 20,
+    rating: 4.8,
+    image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500",
+  ),
+  const Barang(
+    id: 3,
+    namaBarang: "Lombok",
+    harga: 15000,
+    stok: 8,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500",
+  ),
+  const Barang(
+    id: 4,
+    namaBarang: "Bawang Merah",
+    harga: 25000,
+    stok: 15,
+    rating: 4.9,
+    image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=500",
+  ),
+  const Barang(
+    id: 5,
+    namaBarang: "Bawang Putih",
+    harga: 22000,
+    stok: 10,
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=500",
+  ),
+  const Barang(
+    id: 6,
+    namaBarang: "Gula",
+    harga: 14000,
+    stok: 25,
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=500",
+  ),
+
+  const Barang(
+    id: 8,
+    namaBarang: "Serai",
+    harga: 3000,
+    stok: 30,
+    rating: 4.4,
+    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500",
+  ),
+  const Barang(
+    id: 9,
+    namaBarang: "Bawang Bombai",
+    harga: 18000,
+    stok: 14,
+    rating: 4.6,
+    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
+  ),
 ];

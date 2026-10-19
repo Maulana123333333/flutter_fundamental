@@ -1,6 +1,17 @@
 class Barang {
-  final String nama_barang;
   final int id;
+  final String namaBarang;
+  final int harga;
+  final int stok;
+  final double rating;
+  final String image;
 
-  const Barang(this.id, this.nama_barang);
+  const Barang({
+    required this.id,
+    required this.namaBarang,
+    required this.harga,
+    required this.stok,
+    required this.rating,
+    required this.image,
+  });
 }
