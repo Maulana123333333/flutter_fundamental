@@ -1,6 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:pml/pages/shoping_screen.dart';
-import 'package:pml/pages/detail_shoping_screen.dart';
+import 'package:go_router/go_router.dart';
+
+// Ganti import berikut (hapus awalan pages/ yang terdouble)
+import 'models/item.dart';
+import 'pages/home_page.dart';
+import 'pages/item_page.dart';
+
+// Konfigurasi Router Deklaratif
+final router = GoRouter(
+  initialLocation: '/',
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => HomePage(),
+      routes: [
+        GoRoute(
+          path: 'item',
+          builder: (context, state) {
+            // Menerima objek Item yang dikirim dari HomePage melalui parameter 'extra'
+            final item = state.extra as Item;
+            return ItemPage(item: item);
+          },
+        ),
+      ],
+    ),
+  ],
+);
 
 void main() {
   runApp(const MyApp());
@@ -11,18 +36,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    // Menggunakan MaterialApp.router untuk mendukung GoRouter
+    return MaterialApp.router(
       title: 'Aplikasi Belanja',
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        colorSchemeSeed: Colors.green,
         useMaterial3: true,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const ShopingScreen(),
-        '/detail': (context) => const DetailShopingScreen(),
-      },
     );
   }
 }

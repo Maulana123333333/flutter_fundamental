@@ -49,7 +49,14 @@ final List<Barang> listBarang = [
     rating: 4.7,
     image: "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=500",
   ),
-
+  const Barang(
+    id: 7,
+    namaBarang: "Wortel",
+    harga: 9000,
+    stok: 18,
+    rating: 4.8,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vegetable-Carrot.jpg/600px-Vegetable-Carrot.jpg",
+  ),
   const Barang(
     id: 8,
     namaBarang: "Serai",
@@ -65,5 +72,13 @@ final List<Barang> listBarang = [
     stok: 14,
     rating: 4.6,
     image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500",
+  ),
+  const Barang(
+    id: 10,
+    namaBarang: "Merica",
+    harga: 12000,
+    stok: 22,
+    rating: 4.5,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Black_pepper_grain.jpg/600px-Black_pepper_grain.jpg",
   ),
 ];
